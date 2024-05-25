@@ -1,3 +1,4 @@
+// Write a java programs to perform basic calculators operations(Input from user using switch case)
 package com.anudip.lab3;
 import java.util.Scanner;
 
@@ -5,38 +6,47 @@ public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter the first number: ");
+        System.out.print("Enter the first number: ");
         double num1 = scanner.nextDouble();
 
-        System.out.println("Enter the second number: ");
+        System.out.print("Enter the second number: ");
         double num2 = scanner.nextDouble();
 
-        System.out.println("Choose an operation: +, -, *, /");
+        System.out.print("Choose an operation (+, -, *, /): ");
         char operation = scanner.next().charAt(0);
 
-        double result;
+        double result = 0; // Initialize result variable
 
         switch (operation) {
             case '+':
                 result = num1 + num2;
-                System.out.println("The result is: " + result);
                 break;
             case '-':
                 result = num1 - num2;
-                System.out.println("The result is: " + result);
                 break;
             case '*':
                 result = num1 * num2;
-                System.out.println("The result is: " + result);
                 break;
             case '/':
-                result = num1 / num2;
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    System.out.println("Error: Division by zero!");
+                    return; // Exit the program
+                }
                 break;
             default:
-                System.out.println("Invalid operation! Please choose +, -, *, or /.");
-                break;
+                System.out.println("Error: Invalid operation!");
+                return; // Exit the program
         }
+
+        System.out.println("The result is: " + result);
 
         scanner.close();
     }
 }
+// Dry Run:
+// Enter the first number: 10
+// Enter the second number: 5
+// Choose an operation (+, -, *, /): +
+// The result is: 15
